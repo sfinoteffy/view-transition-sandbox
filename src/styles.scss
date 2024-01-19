@@ -10,3 +10,33 @@
 ::view-transition-group(active-image) {
   animation-duration: 500ms;
 }
+
+::view-transition-group(card-1) {
+  animation-duration: 5000ms;
+}
+
+::view-transition-group(card-2) {
+  animation-duration: 5000ms;
+}
+
+::view-transition-group(card-3) {
+  animation-duration: 5000ms;
+}
+
+::view-transition-group(card-4) {
+  animation-duration: 5000ms;
+}
+
+::view-transition-group(card-5) {
+  animation-duration: 5000ms;
+}
+
+::view-transition-group(card-*) {
+  animation-duration: 5000ms;
+}
+
+// ::view-transition-group(my-article) {
+//   animation: popIn 5000ms cubic-bezier(0.7, 2.2, 0.5, 2.2);
+// }
+
+

@@ -1,16 +1,14 @@
-<aside style="display: none" id="js-banner" class="banner">
-  <div class="banner__inner">
-    This browser currently doesn't support View Transitions API. Use Chrome 111 or newer version to view the
-    example.
-  </div>
-</aside>
 <h1>Calvin's super-awesome to-do list</h1>
 <section class="grid">
   <article class="col">
     <h2>🤔 To-do</h2>
     <ul>
       <ng-container *ngFor="let card of cards; let i=index">
-        <li [id]="'card-' + (i+1)" [style]="'--card-color: ' + card.color" #cardElt>
+        <li 
+          [id]="'card-' + (i+1)" 
+          [style]="'--card-color: ' + card.color"
+          [style.viewTransitionName]="'card-' + (i+1)" 
+          #cardElt>
           <div class="title">{{ card.title }}</div>
           <div class="card-controls">
             <button (click)="moveCard(true, cardElt)">👍</button>
