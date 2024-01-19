@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { fromEvent, take } from 'rxjs';
-import { IMAGES } from '../config';
+import { IMAGES } from './config';
 import { StartViewTransitionService } from '../start-view-transition.service';
 
 @Component({

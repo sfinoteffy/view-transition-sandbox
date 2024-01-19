@@ -1,0 +1,122 @@
+@supports not (view-transition-name: none) {
+  .banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fae588;
+    text-align: center;
+    z-index: 5;
+  }
+
+  .banner__inner {
+    padding: 1rem 2rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .banner {
+    display: block !important;
+  }
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: #edf2fb;
+}
+
+.grid {
+  display: flex;
+  gap: 3rem;
+  user-select: none;
+  align-items: flex-start;
+}
+
+h1 {
+  margin-bottom: 3rem;
+  font-size: 5rem;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 3.5rem;
+}
+
+.col {
+  background-color: #fff;
+  flex-grow: 1;
+  flex-basis: 33.33%;
+  border-radius: 8px;
+  padding: 2rem 2rem;
+  box-shadow: 0 5px 10px 0 #aaa;
+  align-items: flex-start;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  background-color: var(--card-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 21px;
+  gap: 1rem;
+}
+
+li .title {
+  flex-grow: 1;
+  line-height: 1.25;
+}
+
+button {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 100%;
+  cursor: pointer;
+  border-width: 0;
+  display: flex;
+  margin: 0;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-self: center;
+}
+
+button:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.card-controls {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 14px;
+}
+
+.card-moving {
+  z-index: 2;
+  position: relative;
+}
+
+.card-moving .card-controls {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

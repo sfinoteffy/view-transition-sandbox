@@ -1,0 +1,42 @@
+<aside style="display: none" id="js-banner" class="banner">
+  <div class="banner__inner">
+    This browser currently doesn't support View Transitions API. Use Chrome 111 or newer version to view the
+    example.
+  </div>
+</aside>
+<h1>Calvin's super-awesome to-do list</h1>
+<section class="grid">
+  <article class="col">
+    <h2>🤔 To-do</h2>
+    <ul>
+      <ng-container *ngFor="let card of cards; let i=index">
+        <li [id]="'card-' + (i+1)" [style]="'--card-color: ' + card.color" #cardElt>
+          <div class="title">{{ card.title }}</div>
+          <div class="card-controls">
+            <button (click)="moveCard(true, cardElt)">👍</button>
+            <button (click)="moveCard(false, cardElt)">👎</button>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </article>
+
+  <article class="col col-complete">
+    <h2>😊 Done!</h2>
+    <ul id="js-list-done">
+      <li style="--card-color: #8eecf5">Wake up early</li>
+      <li style="--card-color: #f1c0e8">
+        Have sugar bombs for breakfast
+      </li>
+    </ul>
+  </article>
+
+  <article class="col col-complete">
+    <h2>😒 Won't-do</h2>
+    <ul id="js-list-not-done">
+      <li style="--card-color: #eaeaea">Clean my room</li>
+      <li style="--card-color: #eaeaea">Go to sleep on time</li>
+      <li style="--card-color: #eaeaea">Play with Susie</li>
+    </ul>
+  </article>
+</section>
