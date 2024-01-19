@@ -16,8 +16,6 @@ export class AppComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit(): void {
-    // console.log(this.startViewTransition);
-    // console.log(this.startViewTransition(() => {}));
     this.overlayWrapper = this.document.getElementById("js-overlay");
     this.overlayContent = this.document.getElementById("js-overlay-target");
   }
@@ -29,6 +27,7 @@ export class AppComponent implements AfterViewInit {
       return;
     }
 
+    // Apply a CSS class that contains the view-transition-name before the animation starts.
     image.classList.add("gallery__image--active");
 
     const imageParentElement = image?.parentElement;
@@ -42,16 +41,18 @@ export class AppComponent implements AfterViewInit {
     if (this.overlayWrapper) {
       fromEvent(this.overlayWrapper, 'click').pipe(
         take(1)
-      ).subscribe(() => {
-        this.startViewTransition(() => this.moveImageToGrid(imageParentElement));
-        image?.classList.remove("gallery__image--active");
+      ).subscribe(async () => {
+        const transition = this.startViewTransition(() => this.moveImageToGrid(imageParentElement));
+
+        await transition.finished;
+
+        // Remove the class that contains the page-transition-tag after the animation ends.
         image?.classList.remove("gallery__image--active");
       })
     }
   }
 
   // Helper functions for moving the image around and toggling the overlay
-
   moveImageToModal(image: HTMLElement) {
     this.overlayWrapper?.classList.add("overlay--active");
     this.overlayContent?.append(image);

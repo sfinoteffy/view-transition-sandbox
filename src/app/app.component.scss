@@ -65,3 +65,7 @@ main {
   object-position: 50% 50%;
   aspect-ratio: 1;
 }
+
+.gallery__image--active {
+  view-transition-name: active-image;
+}
