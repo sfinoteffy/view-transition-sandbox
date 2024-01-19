@@ -1,13 +1,1 @@
-<aside #jsOverlay class="overlay">
-  <div #jsOverlayTarget class="overlay__inner"></div>
-</aside>
-<main>
-  <ng-container *ngFor="let image of images">
-    <figure [style]="'--color: ' + image.color" (click)="toggleImageView(imageElt)">
-      <div>
-        <img #imageElt class="gallery__image" alt="" [src]="image.src" />
-      </div>
-      <figcaption>{{image.caption}}</figcaption>
-    </figure>
-  </ng-container>
-</main>
+<app-images></app-images>
