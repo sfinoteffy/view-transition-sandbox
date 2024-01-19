@@ -120,3 +120,7 @@ button:active {
     animation: none !important;
   }
 }
+
+.card-active {
+  view-transition-name: active-card;
+}

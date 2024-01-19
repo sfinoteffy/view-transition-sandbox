@@ -10,6 +10,7 @@ import { CARDS } from './config';
 export class CardListsComponent {
   private readonly startViewTransitionService = inject(StartViewTransitionService);
   public readonly cards = CARDS;
+  
   moveCard(isDone: boolean, card: HTMLElement) {
     // Get the target list id
     const destination = document.getElementById(
@@ -17,11 +18,13 @@ export class CardListsComponent {
     );
 
     // We'll use this class to hide the item controls while animation is running
-    card.classList.add("card-moving");
+    card.classList.add("card-moving", 'card-active');
 
     const transition = this.startViewTransitionService.startViewTransition(() => {
       // Run animation
       destination?.appendChild(card);
     });
+
+    transition.finished.then(() => card.classList.remove('card-active'));
   }
 }
