@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, inject } from '@angular/core';
 import { fromEvent, take } from 'rxjs';
-import { StartViewTransitionFunction } from './transition.model';
+import { StartViewTransitionFunction, ViewTransition } from './transition.model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,6 @@ import { StartViewTransitionFunction } from './transition.model';
 })
 export class AppComponent implements AfterViewInit {
   private readonly document = inject(DOCUMENT);
-  private readonly startViewTransition: StartViewTransitionFunction =  (this.document as any).startViewTransition;
   private overlayWrapper: HTMLElement | null = null;
   private overlayContent: HTMLElement | null = null;
 
@@ -38,13 +37,13 @@ export class AppComponent implements AfterViewInit {
       return;
     }
 
-    this.moveImageToModal(image);
+    this.startViewTransition(() => this.moveImageToModal(image));
 
     if (this.overlayWrapper) {
       fromEvent(this.overlayWrapper, 'click').pipe(
         take(1)
       ).subscribe(() => {
-        this.moveImageToGrid(imageParentElement);
+        this.startViewTransition(() => this.moveImageToGrid(imageParentElement));
         image?.classList.remove("gallery__image--active");
         image?.classList.remove("gallery__image--active");
       })
@@ -65,5 +64,9 @@ export class AppComponent implements AfterViewInit {
     }
     imageParentElement.append(image);
     this.overlayWrapper?.classList.remove("overlay--active");
+  }
+
+  startViewTransition(callback: () => any): ViewTransition {
+    return (this.document as any).startViewTransition(callback)
   }
 }
