@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, NgZone } from '@angular/core';
 import { ViewTransition } from './transition.model';
 
 @Injectable({
@@ -7,8 +7,9 @@ import { ViewTransition } from './transition.model';
 })
 export class StartViewTransitionService {
   private readonly document = inject(DOCUMENT);
+  private readonly ngZone = inject(NgZone);
   
   startViewTransition(callback: () => any): ViewTransition {
-    return (this.document as any).startViewTransition(callback);
+    return (this.document as any).startViewTransition(() => this.ngZone.run(callback));
   }
 }
