@@ -3,11 +3,11 @@
   <div class="w-[500px] h-[500px] relative">
     <div class="absolute w-fit"
       [ngClass]="{
-        'bg-blue-500 top-0 left-0': blueBox,
-        'bg-green-500 right-0 bottom-0 ': !blueBox
+        'bg-blue-200 top-0 left-0': blueBox,
+        'bg-green-200 right-0 bottom-0 ': !blueBox
       }"
-      [style.viewTransitionName]="transitioning ? 'box' : 'none'"
-      >Blue box</div>
+      [style.viewTransitionName]="'box'"
+      >{{ blueBox ? 'Blue box' : 'Green box'}}</div>
   </div>
 </div>
 

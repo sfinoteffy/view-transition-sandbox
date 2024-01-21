@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { StartViewTransitionService } from '../start-view-transition.service';
 
 @Component({
@@ -8,15 +8,14 @@ import { StartViewTransitionService } from '../start-view-transition.service';
 })
 export class BasicComponent {
   private readonly startViewTransitionService = inject(StartViewTransitionService);
+  private readonly cdr = inject(ChangeDetectorRef);
   blueBox = true;
   transitioning = false;
 
-  async toggle() {
-    this.transitioning = true;
-    const transition = this.startViewTransitionService.startViewTransition(() => {
+  toggle() {
+    this.startViewTransitionService.startViewTransition(() => {
       this.blueBox = !this.blueBox;
+      this.cdr.detectChanges();
     }) ;
-    await transition.finished;
-    this.transitioning = false;
   }
 }
