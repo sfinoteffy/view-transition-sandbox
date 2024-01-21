@@ -1,10 +1,13 @@
 import { ChangeDetectorRef, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { StartViewTransitionService } from '../start-view-transition.service';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-basic',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss']
+    selector: 'app-basic',
+    templateUrl: './basic.component.html',
+    styleUrls: ['./basic.component.scss'],
+    standalone: true,
+    imports: [NgClass]
 })
 export class BasicComponent {
   private readonly startViewTransitionService = inject(StartViewTransitionService);

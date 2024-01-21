@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { StartViewTransitionService } from '../start-view-transition.service';
 import { CARDS } from './config';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-card-lists',
-  templateUrl: './card-lists.component.html',
-  styleUrls: ['./card-lists.component.scss']
+    selector: 'app-card-lists',
+    templateUrl: './card-lists.component.html',
+    styleUrls: ['./card-lists.component.scss'],
+    standalone: true,
+    imports: [NgFor]
 })
 export class CardListsComponent {
   private readonly startViewTransitionService = inject(StartViewTransitionService);

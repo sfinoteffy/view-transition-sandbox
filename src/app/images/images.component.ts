@@ -2,11 +2,14 @@ import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { fromEvent, take } from 'rxjs';
 import { IMAGES } from './config';
 import { StartViewTransitionService } from '../start-view-transition.service';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-images',
-  templateUrl: './images.component.html',
-  styleUrls: ['./images.component.scss']
+    selector: 'app-images',
+    templateUrl: './images.component.html',
+    styleUrls: ['./images.component.scss'],
+    standalone: true,
+    imports: [NgFor]
 })
 export class ImagesComponent {
   private readonly startViewTransitionService = inject(StartViewTransitionService);
